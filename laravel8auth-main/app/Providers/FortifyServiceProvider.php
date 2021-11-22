@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Hash;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -41,7 +41,7 @@ class FortifyServiceProvider extends ServiceProvider
             $user = User::where('email', $request->email)->first();
 
             if ($user &&
-            Hash::check($request->password, $user->password)) {
+                Hash::check($request->password, $user->password)) {
                 return $user;
             }
         });
